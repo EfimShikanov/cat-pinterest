@@ -1,5 +1,5 @@
 import "./App.scss";
-import CatsList from "./components/CatsList/CatsList";
+import CardsList from "./components/CatsList/CardsList";
 import Navbar from "./components/Navbar/Navbar";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <>
       <Navbar />
       <div className="container">
-        <CatsList />
+        <CardsList />
       </div>
     </>
   );
