@@ -1,0 +1,36 @@
+.card {
+  margin: 0 10px 15px 10px;
+  border-radius: 5px;
+  position: relative;
+
+  .card__content {
+    .content__image {
+      width: 255px;
+      height: 255px;
+      display: flex;
+      align-items: center;
+      border-radius: 5px;
+
+      &:hover {
+        box-shadow: 0 6px 5px rgba(0, 0, 0, 0.24),
+          0 9px 18px rgba(0, 0, 0, 0.18);
+      }
+
+      img {
+        width: 255px;
+        height: 255px;
+        max-height: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .card__button {
+    position: absolute;
+    z-index: 3;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+  }
+}
