@@ -1,0 +1,14 @@
+.navbar__button {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  padding: 23px 25px;
+  color: #ffffff;
+  opacity: 0.7;
+  cursor: pointer;
+  background: inherit;
+
+  &:hover {
+    background: #3490e0;
+  }
+}
