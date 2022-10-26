@@ -1,8 +1,15 @@
-import "./App.css";
+import "./App.scss";
+import CatsList from "./components/CatsList/CatsList";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
-    <div></div>
+    <>
+      <Navbar />
+      <div className="container">
+        <CatsList />
+      </div>
+    </>
   );
 }
 
