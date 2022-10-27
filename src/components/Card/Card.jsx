@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./Card.module.scss";
-import { useDispatch, useSelector } from "react-redux";
 import CardButton from "../CardButton/CardButton";
 
 const Card = ({ url, id, isLiked }) => {
@@ -9,6 +8,7 @@ const Card = ({ url, id, isLiked }) => {
   return (
     <div
       className={styles.card}
+      style={{boxShadow: isHovered && "0 6px 5px rgba(0, 0, 0, 0.24), 0 9px 18px rgba(0, 0, 0, 0.18)"}}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -17,9 +17,7 @@ const Card = ({ url, id, isLiked }) => {
           <img src={url} alt="" />
         </div>
       </div>
-      <div className={styles.card__button}>
-        {<CardButton isCardHovered={isHovered} isLiked={isLiked} id={id} />}
-      </div>
+      {<CardButton isCardHovered={isHovered} isLiked={isLiked} id={id} />}
     </div>
   );
 };
