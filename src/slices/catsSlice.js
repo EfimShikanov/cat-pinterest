@@ -11,22 +11,8 @@ export const catsSlice = createSlice({
     setCats: (state, action) => {
       state.data.push(...action.payload);
     },
-    setIsCardHovered: (state, action) => {
-      state.cats.map((cat) => {
-        if (cat.id === action.payload) {
-          cat.isHovered = !cat.isHovered;
-        }
-      });
-    },
-    setIsLikeHovered: (state, action) => {
-      state.cats.map((cat) => {
-        if (cat.id === action.payload) {
-          cat.isHovered = !cat.isHovered;
-        }
-      });
-    },
     setIsLiked: (state, action) => {
-      state.cats.map((cat) => {
+      state.data.map((cat) => {
         if (cat.id === action.payload) {
           cat.isLiked = !cat.isLiked;
         }
@@ -37,8 +23,6 @@ export const catsSlice = createSlice({
 
 export const {
   setCats,
-  setIsCardHovered,
-  setIsLikeHovered,
   setIsLiked
 } = catsSlice.actions;
 
