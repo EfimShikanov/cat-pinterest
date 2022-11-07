@@ -5,16 +5,17 @@ export default class CatsService extends AxiosService {
     super();
   }
 
-  getCats = (limit, setCats) => {
+  getCats = (limit, dispatch, setCats) => {
     return this.get(`/images/search?limit=${limit}`)
       .then((response) => {
-        return response.data.map((item) => {
+        response.data.map((item) => {
           return {
             ...item,
             isLiked: false,
             isHovered: false,
-          }
-        })
+          };
+        });
+        dispatch(setCats(response.data));
       })
       .catch((error) => {
         console.log(error);
