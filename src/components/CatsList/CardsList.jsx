@@ -12,10 +12,20 @@ const CardsList = () => {
   const currentPage = useSelector((state) => state.routing.currentPage);
 
   useEffect(() => {
-    catsService.getCats(20, setCats).then((response) => {
-      dispatch(setCats(response));
-    });
+    catsService.getCats(20, dispatch, setCats);
+    window.addEventListener("scroll", scrollHandler);
   }, []);
+
+  const scrollHandler = (e) => {
+    if (
+      e.target.documentElement.scrollTop + window.innerHeight + 1 >=
+      e.target.documentElement.scrollHeight
+    ) {
+      catsService.getCats(20, setCats).then((response) => {
+        dispatch(setCats(response));
+      });
+    }
+  };
 
   const renderCards = () => {
     return cats.map((cat, index) => {
