@@ -8,7 +8,11 @@ const Card = ({ url, id, isLiked }) => {
   return (
     <div
       className={styles.card}
-      style={{boxShadow: isHovered && "0 6px 5px rgba(0, 0, 0, 0.24), 0 9px 18px rgba(0, 0, 0, 0.18)"}}
+      style={{
+        boxShadow:
+          isHovered &&
+          "0 6px 5px rgba(0, 0, 0, 0.24), 0 9px 18px rgba(0, 0, 0, 0.18)",
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
