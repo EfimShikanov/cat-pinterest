@@ -6,8 +6,8 @@ interface Button {
 }
 
 export interface RoutingSliceState {
-  buttons: Button[],
-  currentPage: Page
+  buttons: Button[];
+  currentPage: Page;
 }
 
 export interface Cat {
@@ -16,9 +16,23 @@ export interface Cat {
   width: number;
   height: number;
   breeds?: [];
+  categories?: { id: number; name: string }[];
+  isLiked: boolean;
 }
 
 export interface CatsSliceState {
   catsList: Cat[];
   favoriteCatsList: Cat[];
+}
+
+export interface GetResponseCat {
+  id: string;
+  url: string;
+  width: number;
+  height: number;
+  breeds?: [];
+}
+
+export interface AxiosGetResponse {
+  data: GetResponseCat[];
 }
