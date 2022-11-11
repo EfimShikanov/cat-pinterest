@@ -1,6 +1,6 @@
 export type Page = "all" | "favorite";
 
-interface Button {
+export interface Button {
   page: Page;
   name: string;
 }
