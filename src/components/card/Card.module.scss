@@ -1,0 +1,30 @@
+.card {
+  width: 255px;
+  height: 255px;
+  position: relative;
+  border-radius: 4px;
+  margin: 10px;
+
+  &:hover {
+    box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.35);
+
+    .card__button {
+      display: block;
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      z-index: 10;
+    }
+  }
+
+  .card__image {
+    width: 255px;
+    height: 255px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  .card__button {
+    display: none;
+  }
+}
