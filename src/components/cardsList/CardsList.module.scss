@@ -1,5 +1,7 @@
 .content {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, 255px);
+  justify-content: center;
   margin-top: 67px;
 }
