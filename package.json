@@ -2,6 +2,7 @@
   "name": "cat-pinterest",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/cat-pinterest/",
   "author": "Efim Shikanov",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.0",
