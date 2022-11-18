@@ -1,0 +1,46 @@
+.content {
+  padding: 50px 0 0 0;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, 255px);
+  justify-content: center;
+  margin-top: 67px;
+  min-height: 100%;
+}
+
+.spinner__container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+
+  .spinner {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid #2196f3;
+    position: relative;
+    animation: rotation 1s infinite;
+    transition: ease-in;
+
+    div {
+      width: 50%;
+      height: 50%;
+      margin: -2px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: white;
+    }
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
