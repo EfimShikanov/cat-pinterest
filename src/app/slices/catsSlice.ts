@@ -16,10 +16,10 @@ export const catsSlice = createSlice({
   name: "cats",
   initialState,
   reducers: {
-    setCats: (state, action: PayloadAction<Cat[]>) => {
+    setCats: (state: CatsSliceState, action: PayloadAction<Cat[]>) => {
       state.catsList.push(...action.payload);
     },
-    addToFavorite: (state, action: PayloadAction<string>) => {
+    addToFavorite: (state: CatsSliceState, action: PayloadAction<string>) => {
       let cat = state.catsList.find((cat) => cat.id === action.payload);
       if (cat) {
         cat.isLiked = true;
@@ -27,7 +27,7 @@ export const catsSlice = createSlice({
         localStorage.favoriteCats = JSON.stringify(state.favoriteCatsList);
       }
     },
-    removeFromFavorite: (state, action: PayloadAction<string>) => {
+    removeFromFavorite: (state: CatsSliceState, action: PayloadAction<string>) => {
       let cat = state.favoriteCatsList.find((cat) => cat.id === action.payload);
       if (cat) {
         const catIndex = state.favoriteCatsList.indexOf(cat);
