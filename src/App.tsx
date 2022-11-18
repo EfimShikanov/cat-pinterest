@@ -20,7 +20,7 @@ const App: React.FC = () => {
         setIsLoading(false);
       }
     })();
-  }, [page]);
+  }, [dispatch, page]);
 
   const loadMore = useCallback(() => {
     setPage((page) => page + 1);

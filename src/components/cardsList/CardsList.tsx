@@ -20,7 +20,7 @@ const CardsList: React.FC<CardsListProps> = ({ loadMore, isLoading }) => {
       loadMore();
       observer?.disconnect();
     }
-  }, [isIntersecting, loadMore]);
+  }, [isIntersecting, loadMore, observer]);
 
   const renderCards = (cats: Cat[]): JSX.Element[] => {
     return cats.map((cat: Cat, index: number) => {
@@ -42,15 +42,19 @@ const CardsList: React.FC<CardsListProps> = ({ loadMore, isLoading }) => {
   };
 
   return (
-
     <>
       <div id={"content"} className={styles.content}>
         {currentPage === "all"
           ? renderCards(cats.catsList)
           : renderCards(cats.favoriteCatsList)}
-
       </div>
-      {isLoading && <div className={styles.spinner__container}><div className={styles.spinner}><div></div></div></div>}
+      {isLoading && currentPage !== "favorite" && (
+        <div className={styles.spinner__container}>
+          <div className={styles.spinner}>
+            <div></div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
