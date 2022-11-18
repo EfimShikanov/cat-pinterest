@@ -1,38 +1,57 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./CardsList.module.scss";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppSelector, useOnScreen } from "../../app/hooks";
 import { Cat } from "../../app/types";
 import Card from "../card/Card";
-import catsService from "../../app/services/catsService";
-import { setCats } from "../../app/slices/catsSlice";
 
-const CardsList: React.FC = () => {
-  const dispatch = useAppDispatch();
+interface CardsListProps {
+  loadMore: () => void;
+  isLoading: boolean;
+}
+
+const CardsList: React.FC<CardsListProps> = ({ loadMore, isLoading }) => {
   const cats = useAppSelector((state) => state.cats);
   const currentPage = useAppSelector((state) => state.routing.currentPage);
 
+  const { measureRef, isIntersecting, observer } = useOnScreen();
+
   useEffect(() => {
-    catsService.getCats(30, dispatch, setCats);
-  }, []);
+    if (isIntersecting) {
+      loadMore();
+      observer?.disconnect();
+    }
+  }, [isIntersecting, loadMore]);
 
   const renderCards = (cats: Cat[]): JSX.Element[] => {
-    return cats.map((cat: Cat) => {
+    return cats.map((cat: Cat, index: number) => {
+      if (index === cats.length - 1 && currentPage !== "favorite") {
+        return (
+          <Card
+            key={index}
+            id={cat.id}
+            isLiked={cat.isLiked}
+            url={cat.url}
+            measureRef={measureRef}
+          />
+        );
+      }
       return (
-        <Card key={cat.id} id={cat.id} isLiked={cat.isLiked} url={cat.url} />
+        <Card key={index} id={cat.id} isLiked={cat.isLiked} url={cat.url} />
       );
     });
   };
 
   return (
-    <div className={styles.content}>
-      {!cats.catsList.length ? (
-        <div>Loading</div>
-      ) : currentPage === "all" ? (
-        renderCards(cats.catsList)
-      ) : (
-        renderCards(cats.favoriteCatsList)
-      )}
-    </div>
+
+    <>
+      <div id={"content"} className={styles.content}>
+        {currentPage === "all"
+          ? renderCards(cats.catsList)
+          : renderCards(cats.favoriteCatsList)}
+
+      </div>
+      {isLoading && <div className={styles.spinner__container}><div className={styles.spinner}><div></div></div></div>}
+    </>
   );
 };
 
